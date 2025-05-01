@@ -1,9 +1,10 @@
 {
-  "baseUrl": "http://localhost:3000", // Adjust to your app's base URL
-  "defaultCommandTimeout": 10000,  // Set timeout for commands like cy.click()
-  "pageLoadTimeout": 10000,  // Set timeout for page loading
-  "video": false,  // Disable video recording (optional)
-  "viewportWidth": 1000,  // Set viewport size for tests
+  "baseUrl": "http://localhost:3000",
+  "defaultCommandTimeout": 10000,
+  "pageLoadTimeout": 10000,
+  "video": false,
+  "viewportWidth": 1000,
   "viewportHeight": 660
 }
+
 
