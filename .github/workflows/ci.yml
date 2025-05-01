@@ -1,0 +1,49 @@
+name: Cypress Testing
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      app:
+        image: node:14 # Use Node.js Docker image
+        options: >-
+          --entrypoint /bin/bash
+        ports:
+          - 3000:3000
+        env:
+          CI: true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: |
+          npm install
+
+      - name: Start the app in the background
+        run: |
+          npm start &  # Start the app, background process
+          sleep 15      # Give the app some time to start
+
+      - name: Install Cypress
+        run: |
+          npm install cypress
+
+      - name: Run Cypress tests
+        run: |
+          npx cypress run  # Run the tests
