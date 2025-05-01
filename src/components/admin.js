@@ -1,5 +1,5 @@
 import React from "react";
-import products from "../constants/product";
+import products from "../constants/product";  // Make sure the file path is correct
 import { Link } from "react-router-dom";
 
 function Admin() {
@@ -7,33 +7,17 @@ function Admin() {
     <div>
       <h1>Admin Panel</h1>
       <ul>
-        <p key={products[0].id}>
-          import React from "react";
-import { Link } from "react-router-dom";
-import products from "../constants/product";  // Adjusted based on the correct file name
-
-const Admin = () => {
-  return (
-    <div>
-      <ul>
-        <p key={products[0].id}>
-          <Link to={`/admin/products/${products[0].id}`}>
-            {products[0].name} - ${products[0].price}
-          </Link>
-        </p>
-      </ul>
-    </div>
-  );
-};
-
-export default Admin;
-
-            {products[0].name} - ${products[0].price}
-          </Link>
-        </p>
+        {products.map((product) => (
+          <li key={product.id}>
+            <Link to={`/admin/products/${product.id}`}>
+              {product.name} - ${product.price}
+            </Link>
+          </li>
+        ))}
       </ul>
     </div>
   );
 }
 
 export default Admin;
+
