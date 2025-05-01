@@ -8,7 +8,26 @@ function Admin() {
       <h1>Admin Panel</h1>
       <ul>
         <p key={products[0].id}>
-          <Link to={/admin/products/${products[0].id}}>
+          import React from "react";
+import { Link } from "react-router-dom";
+import products from "../constants/product";  // Adjusted based on the correct file name
+
+const Admin = () => {
+  return (
+    <div>
+      <ul>
+        <p key={products[0].id}>
+          <Link to={`/admin/products/${products[0].id}`}>
+            {products[0].name} - ${products[0].price}
+          </Link>
+        </p>
+      </ul>
+    </div>
+  );
+};
+
+export default Admin;
+
             {products[0].name} - ${products[0].price}
           </Link>
         </p>
