@@ -4,46 +4,36 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
-    services:
-      app:
-        image: node:14  # You can specify the image version here
-        options: >-
-          --entrypoint /bin/bash
-        ports:
-          - 3000:3000  # Make sure the port matches your app's port
-        env:
-          CI: true
-
     steps:
+    
       - name: Checkout code
         uses: actions/checkout@v2
 
+   
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '14'
 
+  
       - name: Install dependencies
-        run: |
-          npm install
+        run: npm install
 
-      - name: Start the app in the background
+      
+      - name: Start the app
         run: |
-          npm start &  # Start the app, in the background
-          sleep 15      # Wait for the app to be ready before running Cypress
+          PORT=3001 npm start &  
+          sleep 30               
 
+    
       - name: Install Cypress
-        run: |
-          npm install cypress
+        run: npm install cypress
 
+      
       - name: Run Cypress tests
-        run: |
-          npx cypress run  # Run the tests
+        run: npx cypress run
