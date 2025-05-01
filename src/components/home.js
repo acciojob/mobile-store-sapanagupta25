@@ -7,8 +7,8 @@ const Home = () => {
   return (
     <div>
       {products.map((item) => (
-        <Link key={item.id} to={/products/${item.id}}>
-          {item.name} <button className="btn">Buy</button>
+        <Link key={item.id} to={`/products/${item.id}`}>
+      {item.name} <button className="btn">Buy</button>
         </Link>
       ))}
     </div>
