@@ -14,11 +14,11 @@ jobs:
 
     services:
       app:
-        image: node:14 # Use Node.js Docker image
+        image: node:14  # You can specify the image version here
         options: >-
           --entrypoint /bin/bash
         ports:
-          - 3000:3000
+          - 3000:3000  # Make sure the port matches your app's port
         env:
           CI: true
 
@@ -37,8 +37,8 @@ jobs:
 
       - name: Start the app in the background
         run: |
-          npm start &  # Start the app, background process
-          sleep 15      # Give the app some time to start
+          npm start &  # Start the app, in the background
+          sleep 15      # Wait for the app to be ready before running Cypress
 
       - name: Install Cypress
         run: |
